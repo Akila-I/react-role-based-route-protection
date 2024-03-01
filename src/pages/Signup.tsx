@@ -9,9 +9,9 @@ export const SignupPage = () => {
 
   const navigate = useNavigate();
 
-  const handleSignup = async (e:any) => {
+  const handleSignup = async (e: any) => {
     e.preventDefault();
-    
+
     // Axios request to the backend
     /*
     // sample request body
@@ -24,7 +24,7 @@ export const SignupPage = () => {
     */
     // const response = await axios.post("http://localhost:5000/signup", requestBody);
     const response: string = "success"; // mock response
-    
+
     if (response === "success") {
       navigate('/login');
     } else {
@@ -32,8 +32,42 @@ export const SignupPage = () => {
     }
   };
 
+  // css
+  const styles = {
+    container: {
+      padding: "50px",
+      border: "1px solid #ccc",
+      borderRadius: "10px",
+      maxWidth: "500px",
+      marginLeft: "auto",
+      marginRight: "auto",
+      marginTop: "50px",
+    },
+    input: {
+      width: "95%",
+      padding: "8px",
+      margin: "10px",
+      marginLeft: "0",
+      display: "block",
+    },
+    button: {
+      backgroundColor: "#4caf50",
+      color: "white",
+      padding: "10px 15px",
+      border: "none",
+      borderRadius: "5px",
+      cursor: "pointer",
+      width: "100%",
+      marginTop: "10px",
+    },
+    loginBtnContainer: {
+      display: "flex",
+      justifyContent: "center",
+    },
+  };
+
   return (
-    <div>
+    <div style={styles.container}>
       <form onSubmit={handleSignup}>
         <div>
           <label htmlFor="email">Email:</label>
@@ -42,6 +76,7 @@ export const SignupPage = () => {
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            style={styles.input}
           />
         </div>
         <div>
@@ -51,6 +86,7 @@ export const SignupPage = () => {
             type="text"
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
+            style={styles.input}
           />
         </div>
         <div>
@@ -60,6 +96,7 @@ export const SignupPage = () => {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            style={styles.input}
           />
         </div>
         <div>
@@ -69,9 +106,12 @@ export const SignupPage = () => {
             type="password"
             value={confPassword}
             onChange={(e) => setConfPassword(e.target.value)}
+            style={styles.input}
           />
         </div>
-        <button type="submit">Signup</button>
+        <div style={styles.loginBtnContainer}>
+          <button type="submit" style={styles.button}>Signup</button>
+        </div>
       </form>
     </div>
   );
