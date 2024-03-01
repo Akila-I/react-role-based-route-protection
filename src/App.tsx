@@ -1,35 +1,47 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Route, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
+import { AuthLayout } from './layouts/AuthLayout'
+import { LandingLayout } from './layouts/LandingLayout'
+import { AdminProtectedLayout } from './layouts/AdminProtectedLayout'
+import { InternalUserProtectedLayout } from './layouts/InternalUserProtectedLayout'
+import { ExternalUserProtectedLayout } from './layouts/ExternalUserProtectedLayout'
 
-function App() {
-  const [count, setCount] = useState(0)
+import { LandingPage } from './pages/Landing'
+import { LoginPage } from './pages/Login'
+import { SignupPage } from './pages/Signup'
 
-  return (
+import { AdminHome } from './pages/admin/AdminHome'
+import { InternalUserHome } from './pages/internal-user/InternalUserHome'
+import { ExternalUserHome } from './pages/external-user/ExternalUserHome'
+
+import { Profile } from './pages/Profile'
+
+// import './App.css'
+
+export const router = createBrowserRouter(
+  createRoutesFromElements(
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Route element={<AuthLayout />}>
+        <Route path='/' element={<LandingLayout />}>
+          <Route index element={<LandingPage />} />
+          <Route path='/login' element={<LoginPage />} />
+          <Route path='/signup' element={<SignupPage />} />
+        </Route>
+
+        <Route path='/admin' element={<AdminProtectedLayout />}>
+          <Route index element={<AdminHome />} />
+          <Route path='profile' element={<Profile />} />
+        </Route>
+
+        <Route path='/internal-user' element={<InternalUserProtectedLayout />}>
+          <Route index element={<InternalUserHome />} />
+          <Route path='profile' element={<Profile />} />
+        </Route>
+
+        <Route path='/external-user' element={<ExternalUserProtectedLayout />}>
+          <Route index element={<ExternalUserHome />} />
+          <Route path='profile' element={<Profile />} />
+        </Route>
+      </Route>
     </>
   )
-}
-
-export default App
+);
