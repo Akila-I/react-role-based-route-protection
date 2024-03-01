@@ -34,8 +34,42 @@ export const LoginPage = () => {
     }
   };
 
+  // css
+  const styles = {
+    container: {
+      padding: "50px",
+      border: "1px solid #ccc",
+      borderRadius: "10px",
+      maxWidth: "500px",
+      marginLeft: "auto",
+      marginRight: "auto",
+      marginTop: "50px",
+    },
+    input: {
+      width: "95%",
+      padding: "8px",
+      margin: "10px",
+      marginLeft: "0",
+      display: "block",
+    },
+    button: {
+      backgroundColor: "#4caf50",
+      color: "white",
+      padding: "10px 15px",
+      border: "none",
+      borderRadius: "5px",
+      cursor: "pointer",
+      width: "100%",
+      marginTop: "10px",
+    },
+    loginBtnContainer: {
+      display: "flex",
+      justifyContent: "center",
+    },
+  };
+
   return (
-    <div>
+    <div style={styles.container}>
       <form onSubmit={handleLogin}>
         <div>
           <label htmlFor="email">Email:</label>
@@ -44,6 +78,7 @@ export const LoginPage = () => {
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            style={styles.input}
           />
         </div>
         <div>
@@ -53,9 +88,14 @@ export const LoginPage = () => {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            style={styles.input}
           />
         </div>
-        <button type="submit">Login</button>
+        <div style={styles.loginBtnContainer}>
+        <button type="submit" style={styles.button}>
+          Login
+        </button>
+        </div>
       </form>
     </div>
   );
