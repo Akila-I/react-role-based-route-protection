@@ -18,10 +18,13 @@ export const InternalUserProtectedLayout = () => {
   return (
     <div>
       <nav>
-        <Link to="/internal-user/">Internal User Home</Link>
-        <Link to="/internal-user/settings">Settings</Link>
-        <Link to="/internal-user/profile">Profile</Link>
-        <Link to="#" onClick={logout}>Logout</Link>
+        <span>Protected Routes App</span>
+        <div className="nav-links">
+          <Link to="/internal-user/">Internal User Home</Link>
+          <Link to="/internal-user/settings">Settings</Link>
+          <Link to="/internal-user/profile">Profile</Link>
+          <Link to="#" onClick={logout}>Logout</Link>
+        </div>
       </nav>
       <Outlet />
     </div>

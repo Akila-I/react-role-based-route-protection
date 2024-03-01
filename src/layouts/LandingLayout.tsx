@@ -2,7 +2,7 @@ import { Outlet, Link } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 
 export const LandingLayout = () => {
-  const {user, loggedIn } = useAuth();
+  const { user, loggedIn } = useAuth();
 
   if (user) {
     loggedIn();
@@ -12,8 +12,10 @@ export const LandingLayout = () => {
     <div>
       <nav>
         <span>Protected Routes App</span>
-        <button> <Link to="/login">Login</Link> </button>
-        <button> <Link to="/signup">Register</Link> </button>
+        <div className="nav-links">
+          <Link to="/login">Login</Link>
+          <Link to="/signup">Register</Link>
+        </div>
       </nav>
       <Outlet />
     </div>

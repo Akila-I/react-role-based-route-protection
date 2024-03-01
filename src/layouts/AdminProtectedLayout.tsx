@@ -18,10 +18,13 @@ export const AdminProtectedLayout = () => {
   return (
     <div>
       <nav>
-        <Link to="/admin/">Admin Home</Link>
-        <Link to="/admin/settings">Settings</Link>
-        <Link to="/admin/profile">Profile</Link>
-        <Link to="#" onClick={logout}>Logout</Link>
+        <span>Protected Routes App</span>
+        <div className="nav-links">
+          <Link to="/admin/">Admin Home</Link>
+          <Link to="/admin/settings">Settings</Link>
+          <Link to="/admin/profile">Profile</Link>
+          <Link to="#" onClick={logout}>Logout</Link>
+        </div>
       </nav>
       <Outlet />
     </div>

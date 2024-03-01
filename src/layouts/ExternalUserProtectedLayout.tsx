@@ -18,10 +18,13 @@ export const ExternalUserProtectedLayout = () => {
   return (
     <div>
       <nav>
-        <Link to="/external-user/">External User Home</Link>
-        <Link to="/external-user/settings">Settings</Link>
-        <Link to="/external-user/profile">Profile</Link>
-        <Link to="#" onClick={logout}>Logout</Link>
+        <span>Protected Routes App</span>
+        <div className="nav-links">
+          <Link to="/external-user/">External User Home</Link>
+          <Link to="/external-user/settings">Settings</Link>
+          <Link to="/external-user/profile">Profile</Link>
+          <Link to="#" onClick={logout}>Logout</Link>
+        </div>
       </nav>
       <Outlet />
     </div>
