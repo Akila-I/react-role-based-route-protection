@@ -1,9 +1,7 @@
 import { Route, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 import { AuthLayout } from './layouts/AuthLayout'
 import { LandingLayout } from './layouts/LandingLayout'
-import { AdminProtectedLayout } from './layouts/AdminProtectedLayout'
-import { InternalUserProtectedLayout } from './layouts/InternalUserProtectedLayout'
-import { ExternalUserProtectedLayout } from './layouts/ExternalUserProtectedLayout'
+import { ProtectedLayout } from './layouts/ProtectedLayout'
 
 import { LandingPage } from './pages/Landing'
 import { LoginPage } from './pages/Login'
@@ -27,17 +25,17 @@ export const router = createBrowserRouter(
           <Route path='/signup' element={<SignupPage />} />
         </Route>
 
-        <Route path='/admin' element={<AdminProtectedLayout />}>
+        <Route path='/admin' element={<ProtectedLayout role="admin" />}>
           <Route index element={<AdminHome />} />
           <Route path='profile' element={<Profile />} />
         </Route>
 
-        <Route path='/internal-user' element={<InternalUserProtectedLayout />}>
+        <Route path='/internal-user' element={<ProtectedLayout role="internal-user" />}>
           <Route index element={<InternalUserHome />} />
           <Route path='profile' element={<Profile />} />
         </Route>
 
-        <Route path='/external-user' element={<ExternalUserProtectedLayout />}>
+        <Route path='/external-user' element={<ProtectedLayout role="external-user" />}>
           <Route index element={<ExternalUserHome />} />
           <Route path='profile' element={<Profile />} />
         </Route>
